@@ -1,4 +1,5 @@
-import Register from "./pages/Register"; // <-- NY
+import Register from "./pages/Register";
+import Login from "./pages/Login"; // <-- NY
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -7,7 +8,6 @@ import Home from "./pages/Home";
 import AddListing from "./pages/AddListing";
 import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
-
 
 function App() {
   const [listings, setListings] = useState([
@@ -24,7 +24,9 @@ function App() {
           <Route path="/add" element={<AddListing listings={listings} setListings={setListings} />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/profile" element={<Profile listings={listings} />} />
-          <Route path="/register" element={<Register />} /> {/* <-- NY */}
+
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} /> {/* <-- NY */}
         </Routes>
       </main>
       <Footer />

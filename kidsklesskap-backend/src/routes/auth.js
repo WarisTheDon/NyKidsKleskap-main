@@ -2,6 +2,7 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import { db } from "../db/client.js";
 import { users } from "../db/schema.js";
+import { eq } from "drizzle-orm";
 
 const router = express.Router();
 
@@ -24,9 +25,13 @@ router.post("/auth/register", async (req, res) => {
 router.post("/auth/login", async (req, res) => {
   const { email, password } = req.body;
 
-  const u = await db.query.users.findFirst({
-    where: (user, { eq }) => eq(user.email, email)
-  });
+  const result = await db
+    .select()
+    .from(users)
+    .where(eq(users.email, email))
+    .limit(1);
+
+  const u = result[0];
 
   if (!u) return res.status(400).json({ error: "Invalid email/password" });
 

@@ -6,13 +6,15 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <h1 className="logo">Kids Klesskap</h1>
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/add">Legg ut annonse</Link></li>
-        <li><Link to="/messages">Meldinger</Link></li>
-        <li><Link to="/profile">Profil</Link></li>
-        <li><Link to="/register">Register</Link></li> {/* <-- NY */}
-      </ul>
+     <ul className="nav-links">
+  <li><Link to="/">Home</Link></li>
+  <li><Link to="/add">Legg ut annonse</Link></li>
+  <li><Link to="/messages">Meldinger</Link></li>
+  <li><Link to="/profile">Profil</Link></li>
+  <li><Link to="/register">Register</Link></li>
+  <li><Link to="/login">Logg inn</Link></li> {/* <-- NY riktig plass */}
+</ul>
+
     </nav>
   );
 };
