@@ -5,6 +5,7 @@ const Messages = () => {
     <div className="messages">
       <h2>Meldinger</h2>
       <p>Ingen meldinger enda.</p>
+      <p>kommer til neste update.</p>
     </div>
   );
 };
