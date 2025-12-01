@@ -22,11 +22,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home listings={listings} />} />
           <Route path="/add" element={<AddListing listings={listings} setListings={setListings} />} />
-          <Route path="/messages" element={<Messages />} />
+          <Route path="/test" element={<Messages />} />
           <Route path="/profile" element={<Profile listings={listings} />} />
 
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} /> {/* <-- NY */}
+          <Route path="/login" element={<Login />} /> {/* <-- Nye logg in må kanskje byttes før siste innlevering idk tho */}
         </Routes>
       </main>
       <Footer />
