@@ -4,7 +4,15 @@ const AddListing = ({ listings, setListings }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const localImageUrl = URL.createObjectURL(file);
+      setImage(localImageUrl); // lagrer lokal blob-URL
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,20 +24,54 @@ const AddListing = ({ listings, setListings }) => {
       image: image || "https://via.placeholder.com/150",
     };
     setListings([...listings, newListing]);
+
+    // reset
     setTitle("");
     setDescription("");
     setPrice("");
-    setImage("");
+    setImage(null);
   };
 
   return (
     <div className="add-listing">
       <h2>Legg ut ny annonse</h2>
       <form onSubmit={handleSubmit}>
-        <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Tittel" required />
-        <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Beskrivelse" required />
-        <input value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Pris" required />
-        <input value={image} onChange={(e) => setImage(e.target.value)} placeholder="Bilde-URL (valgfritt)" />
+        <input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Tittel"
+          required
+        />
+
+        <input
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Beskrivelse"
+          required
+        />
+
+        <input
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          placeholder="Pris"
+          required
+        />
+
+        {/* FILOPPLASTNING */}
+        <input 
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+        />
+
+        {image && (
+          <img
+            src={image}
+            alt="Preview"
+            style={{ width: "120px", marginTop: "10px", borderRadius: "5px" }}
+          />
+        )}
+
         <button type="submit">Legg ut</button>
       </form>
     </div>
