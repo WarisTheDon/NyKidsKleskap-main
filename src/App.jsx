@@ -34,7 +34,7 @@ function App() {
 
   return (
     <Router>
-      <div className="page-container">   {/* <-- SUPER VIKTIG WRAPPER */}
+      <div className="page-container">   {/* <-- SUPER VIKTIG WRAPPER, hjelper i henhold til css styling av hele siden uten den så blir det vanskeligere */}
 
         <Navbar />
 

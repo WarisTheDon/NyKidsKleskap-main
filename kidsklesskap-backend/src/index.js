@@ -5,7 +5,7 @@ import auth from "./routes/auth.js";
 
 const app = express();
 
-// åpen CORS for ALLE localhost porter
+// åpener CORS for ALLE localhost porter
 app.use(cors({
   origin: (origin, cb) => cb(null, true),
   credentials: true
@@ -13,7 +13,7 @@ app.use(cors({
 
 app.use(express.json());
 
-// API routes
+// disse er "API" routes
 app.use("/api", auth);
 
 app.listen(process.env.PORT, () => {
