@@ -6,23 +6,30 @@ const AddListing = ({ listings, setListings }) => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
 
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       const localImageUrl = URL.createObjectURL(file);
-      setImage(localImageUrl); // lagrer lokal blob-URL
+      setImage(localImageUrl);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newListing = {
-      id: listings.length + 1,
+      id: Date.now(), // unik ID
       title,
       description,
       price,
       image: image || "https://via.placeholder.com/150",
+      phone,
+      email
     };
+
     setListings([...listings, newListing]);
 
     // reset
@@ -30,12 +37,15 @@ const AddListing = ({ listings, setListings }) => {
     setDescription("");
     setPrice("");
     setImage(null);
+    setPhone("");
+    setEmail("");
   };
 
   return (
     <div className="add-listing">
       <h2>Legg ut ny annonse</h2>
       <form onSubmit={handleSubmit}>
+
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -53,11 +63,28 @@ const AddListing = ({ listings, setListings }) => {
         <input
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-          placeholder="Pris"
+          placeholder="Pris (kun tall)"
+          required
+        />
+        
+
+        {/* Telefonnummer */}
+        <input
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="Telefonnummer"
           required
         />
 
-        {/* FILOPPLASTNING */}
+        {/* E-post */}
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-post"
+          required
+        />
+
+        {/* Bildeopplasting */}
         <input 
           type="file"
           accept="image/*"
