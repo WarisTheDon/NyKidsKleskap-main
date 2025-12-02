@@ -1,5 +1,5 @@
 import Register from "./pages/Register";
-import Login from "./pages/Login"; // <-- NY
+import Login from "./pages/Login"; 
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -10,11 +10,26 @@ import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
 import ListingPage from "./pages/ListingPage";
 
+// IMPORTERTE BILDENE DINE
+import skate from "./assets/skate.png";
+import nerf from "./assets/nerf.png";
 
 function App() {
   const [listings, setListings] = useState([
-    { id: 1, title: "Babyjakke blå", description: "Pent brukt, 1 år", price: "150kr", image: "https://via.placeholder.com/150" },
-    { id: 2, title: "Småbarn bukse", description: "Aldri brukt", price: "100kr", image: "https://via.placeholder.com/150" }
+    { 
+      id: 1, 
+      title: "Skateboard", 
+      description: "Kult skateboard for barn. Pent brukt!", 
+      price: "300", 
+      image: skate 
+    },
+    { 
+      id: 2, 
+      title: "Nerf Blaster", 
+      description: "Helt ny Nerf gun, kjempegøy for barn!", 
+      price: "200", 
+      image: nerf 
+    }
   ]);
 
   return (
@@ -23,13 +38,26 @@ function App() {
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home listings={listings} />} />
-          <Route path="/add" element={<AddListing listings={listings} setListings={setListings} />} />
+
+          <Route 
+            path="/add" 
+            element={<AddListing listings={listings} setListings={setListings} />} 
+          />
+
           <Route path="/messages" element={<Messages />} />
-          <Route path="/profile" element={<Profile listings={listings} />} />
-          <Route path="/listing/:id" element={<ListingPage listings={listings} />} />
+          
+          <Route 
+            path="/profile" 
+            element={<Profile listings={listings} />} 
+          />
+
+          <Route 
+            path="/listing/:id" 
+            element={<ListingPage listings={listings} />} 
+          />
 
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} /> {/* <-- Nye logg in må kanskje byttes før siste innlevering idk tho */}
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
       <Footer />
