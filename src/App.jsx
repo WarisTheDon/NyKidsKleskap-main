@@ -34,33 +34,39 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={<Home listings={listings} />} />
+      <div className="page-container">   {/* <-- SUPER VIKTIG WRAPPER */}
 
-          <Route 
-            path="/add" 
-            element={<AddListing listings={listings} setListings={setListings} />} 
-          />
+        <Navbar />
 
-          <Route path="/messages" element={<Messages />} />
-          
-          <Route 
-            path="/profile" 
-            element={<Profile listings={listings} />} 
-          />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home listings={listings} />} />
 
-          <Route 
-            path="/listing/:id" 
-            element={<ListingPage listings={listings} />} 
-          />
+            <Route 
+              path="/add" 
+              element={<AddListing listings={listings} setListings={setListings} />} 
+            />
 
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </main>
-      <Footer />
+            <Route path="/messages" element={<Messages />} />
+            
+            <Route 
+              path="/profile" 
+              element={<Profile listings={listings} />} 
+            />
+
+            <Route 
+              path="/listing/:id" 
+              element={<ListingPage listings={listings} />} 
+            />
+
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </main>
+
+        <Footer />
+
+      </div>
     </Router>
   );
 }
