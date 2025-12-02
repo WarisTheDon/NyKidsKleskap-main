@@ -17,7 +17,7 @@ const Home = ({ listings }) => {
         {filteredListings.map((listing) => (
           <Card key={listing.id} {...listing} />
         ))}
-        {filteredListings.length === 0 && <p>Ingen annonser funnet.</p>}
+        {filteredListings.length === 0 && <p>Ingen annonser funnet for nå.</p>}
       </div>
     </div>
   );

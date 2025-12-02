@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import AddListing from "./pages/AddListing";
 import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
+import ListingPage from "./pages/ListingPage";
+
 
 function App() {
   const [listings, setListings] = useState([
@@ -22,8 +24,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home listings={listings} />} />
           <Route path="/add" element={<AddListing listings={listings} setListings={setListings} />} />
-          <Route path="/test" element={<Messages />} />
+          <Route path="/messages" element={<Messages />} />
           <Route path="/profile" element={<Profile listings={listings} />} />
+          <Route path="/listing/:id" element={<ListingPage listings={listings} />} />
 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} /> {/* <-- Nye logg in må kanskje byttes før siste innlevering idk tho */}
