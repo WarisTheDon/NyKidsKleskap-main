@@ -8,6 +8,9 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route } from '@redwoodjs/router'
+<Route path="/hello" page={HelloPage} name="hello" />
+
+
 
 const Routes = () => {
   return (
